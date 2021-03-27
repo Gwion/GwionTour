@@ -4,6 +4,12 @@ language = "en"
 multilingual = false
 src = "src"
 title = "GwionTour"
+description = "Tutorial for Gwion"
+
+[output.html]
+default-theme = "coal"
+git-repository-url ="https://github.com/Gwion/Gwion"
+
 [output.html.playground]
 line-numbers= false
 editable = true
