@@ -5,7 +5,7 @@ Here is a simple example
 
 ```gwion,editable
 #! request needed plugin
-#!require Modules
+#require Modules
 
 #! print 'Hello, World'
 <<< "Hello, World!" >>>;
