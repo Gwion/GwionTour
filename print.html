@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="hello_world.html">Hello</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="hello_world.html">Hello, World!</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -165,10 +165,22 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p>Trying to get the GwionTour working using mdbook</p>
-<pre><code class="language-gwion editable">&lt;&lt;&lt; &quot;Hello, World!&quot; &gt;&gt;&gt;;
+                        <h1 id="a-gwion-hello-world"><a class="header" href="#a-gwion-hello-world">A Gwion 'Hello, World'</a></h1>
+<p>Let's get started using gwion!
+Here is a simple example</p>
+<pre><code class="language-gwion editable">#! request needed plugin
+#!require Modules
+
+#! print 'Hello, World'
+&lt;&lt;&lt; &quot;Hello, World!&quot; &gt;&gt;&gt;;
+
+#! create a Sinusoidal oscillator
+#! and connect it to the speakers
+new SinOsc ~&gt; dac;
+
+#! let time pass
+5::second =&gt; now;
 </code></pre>
-<p><audio class="GwionAudioPlayer">test</audio></p>
 
                     </main>
 
