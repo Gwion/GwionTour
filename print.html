@@ -168,19 +168,43 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="a-gwion-hello-world"><a class="header" href="#a-gwion-hello-world">A Gwion 'Hello, World'</a></h1>
-<p>Let's get started using gwion!
-Here is a simple example</p>
-<pre><code class="language-gwion editable">#! request needed plugin
-#require Modules
+<p>Let's get started using gwion!</p>
+<h2 id="a-simple-example-step-by-step"><a class="header" href="#a-simple-example-step-by-step">A simple example, step by step</a></h2>
+<p>We are gonna write a typical Gwion <em>Hello, World!</em></p>
+<h3 id="request-needed-plugin"><a class="header" href="#request-needed-plugin">request needed plugin</a></h3>
+<p>In Gwion, a program typically makes sound.<br />
+Let's get some handy sound generator,
+in this case, from the <code>Modules</code> plugin.</p>
+<pre><code class="language-gwion">#require Modules
+</code></pre>
+<h3 id="greet-the-world"><a class="header" href="#greet-the-world">Greet the world</a></h3>
+<p>Indeed, a <em>Hello, world</em> is meant to print something.<br />
+This is done using the <em>gack operator</em> (<code>&lt;&lt;&lt;</code> ... <code>&gt;&gt;&gt;</code>)</p>
+<pre><code class="language-gwion">&lt;&lt;&lt; &quot;Hello, World!&quot; &gt;&gt;&gt;;
+</code></pre>
+<h3 id="make-some-sound"><a class="header" href="#make-some-sound">Make some sound</a></h3>
+<p>Now we create a Sinusoidal generator
+and connect it to thee audio output
+(<code>dac</code> stands for <em>Digital to Audio Converter</em>)
+using the <code>~&gt;</code> operator.</p>
+<pre><code class="language-gwion">new SinOsc ~&gt; dac;
+</code></pre>
+<h2 id="let-time-pass"><a class="header" href="#let-time-pass">let time pass</a></h2>
+<p>Let's face it, we did not make any sound yet:
+No time passed, and if no time passed,
+there can't have been any sound.
+We can <em>wait</em> some time using</p>
+<pre><code class="language-gwion">5::second =&gt; now;
+</code></pre>
+<h2 id="try-it"><a class="header" href="#try-it">Try it</a></h2>
+<p>Here is the complete example, editable and runnable.<br />
+Have fun!</p>
+<pre><code class="language-gwion editable">#require Modules
 
-#! print 'Hello, World'
 &lt;&lt;&lt; &quot;Hello, World!&quot; &gt;&gt;&gt;;
 
-#! create a Sinusoidal oscillator
-#! and connect it to the speakers
 new SinOsc ~&gt; dac;
 
-#! let time pass
 5::second =&gt; now;
 </code></pre>
 <h1 id="declaring-a-variable"><a class="header" href="#declaring-a-variable">Declaring a Variable</a></h1>
