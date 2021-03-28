@@ -7,36 +7,30 @@ Let's get started using gwion!
 We are gonna write a typical Gwion *Hello, World!*
 
 
-### request needed plugin
+### Prepare to make sound
 
 In Gwion, a program typically makes sound.  
-Let's get some handy sound generator,
-in this case, from the `Modules` plugin.
 
-```gwion
+#### Request needed plugin
+
+Now we create a Sinusoidal generator
+and connect it to thee audio output
+(`dac` stands for *Digital to Audio Converter*)
+using the `~>` operator.
+
+```gwion,no_run
 #require Modules
+new SinOsc ~> dac;
 ```
-
+> the `SinOsc` class comes from the `Modules` plugin
 
 ### Greet the world
 
 Indeed, a *Hello, world* is meant to print something.  
 This is done using the *gack operator* (`<<<` ... `>>>`)
 
-```gwion
+```gwion,no_run
 <<< "Hello, World!" >>>;
-```
-
-
-### Make some sound
-
-
-Now we create a Sinusoidal generator
-and connect it to thee audio output
-(`dac` stands for *Digital to Audio Converter*)
-using the `~>` operator.
-```gwion
-new SinOsc ~> dac;
 ```
 
 
@@ -47,7 +41,7 @@ No time passed, and if no time passed,
 there can't have been any sound.
 We can *wait* some time using
 
-```gwion
+```gwion,no_run
 5::second => now;
 ```
 

@@ -3,8 +3,8 @@ authors = ["Jérémie Astor"]
 language = "en"
 multilingual = false
 src = "src"
-title = "GwionSamples"
-description = "Various Gwion Samples"
+title = "GwionTour"
+description = "A tour of Gwion"
 
 [output.html]
 default-theme = "coal"
