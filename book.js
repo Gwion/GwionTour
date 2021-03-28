@@ -173,6 +173,14 @@ function playground_text(playground) {
                 editor.clearSelection();
             });
         }
+
+        const play_button = pre_block.querySelector(".play-button");
+
+        // skip if code is `no_run`
+        if (pre_block.querySelector('code').classList.contains("no_run")) {
+            play_button.classList.add("hidden");
+            return;
+        }
     });
 })();
 

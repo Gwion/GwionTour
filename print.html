@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>GwionSamples</title>
+        <title>GwionTour</title>
         
         <meta name="robots" content="noindex" />
         
@@ -15,7 +15,7 @@
 
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="Various Gwion Samples">
+        <meta name="description" content="A tour of Gwion">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
@@ -127,7 +127,7 @@
                         
                     </div>
 
-                    <h1 class="menu-title">GwionSamples</h1>
+                    <h1 class="menu-title">GwionTour</h1>
 
                     <div class="right-buttons">
                         
@@ -171,30 +171,30 @@
 <p>Let's get started using gwion!</p>
 <h2 id="a-simple-example-step-by-step"><a class="header" href="#a-simple-example-step-by-step">A simple example, step by step</a></h2>
 <p>We are gonna write a typical Gwion <em>Hello, World!</em></p>
-<h3 id="request-needed-plugin"><a class="header" href="#request-needed-plugin">request needed plugin</a></h3>
-<p>In Gwion, a program typically makes sound.<br />
-Let's get some handy sound generator,
-in this case, from the <code>Modules</code> plugin.</p>
-<pre><code class="language-gwion">#require Modules
-</code></pre>
-<h3 id="greet-the-world"><a class="header" href="#greet-the-world">Greet the world</a></h3>
-<p>Indeed, a <em>Hello, world</em> is meant to print something.<br />
-This is done using the <em>gack operator</em> (<code>&lt;&lt;&lt;</code> ... <code>&gt;&gt;&gt;</code>)</p>
-<pre><code class="language-gwion">&lt;&lt;&lt; &quot;Hello, World!&quot; &gt;&gt;&gt;;
-</code></pre>
-<h3 id="make-some-sound"><a class="header" href="#make-some-sound">Make some sound</a></h3>
+<h3 id="prepare-to-make-sound"><a class="header" href="#prepare-to-make-sound">Prepare to make sound</a></h3>
+<p>In Gwion, a program typically makes sound.</p>
+<h4 id="request-needed-plugin"><a class="header" href="#request-needed-plugin">Request needed plugin</a></h4>
 <p>Now we create a Sinusoidal generator
 and connect it to thee audio output
 (<code>dac</code> stands for <em>Digital to Audio Converter</em>)
 using the <code>~&gt;</code> operator.</p>
-<pre><code class="language-gwion">new SinOsc ~&gt; dac;
+<pre><code class="language-gwion no_run">#require Modules
+new SinOsc ~&gt; dac;
+</code></pre>
+<blockquote>
+<p>the <code>SinOsc</code> class comes from the <code>Modules</code> plugin</p>
+</blockquote>
+<h3 id="greet-the-world"><a class="header" href="#greet-the-world">Greet the world</a></h3>
+<p>Indeed, a <em>Hello, world</em> is meant to print something.<br />
+This is done using the <em>gack operator</em> (<code>&lt;&lt;&lt;</code> ... <code>&gt;&gt;&gt;</code>)</p>
+<pre><code class="language-gwion no_run">&lt;&lt;&lt; &quot;Hello, World!&quot; &gt;&gt;&gt;;
 </code></pre>
 <h2 id="let-time-pass"><a class="header" href="#let-time-pass">let time pass</a></h2>
 <p>Let's face it, we did not make any sound yet:
 No time passed, and if no time passed,
 there can't have been any sound.
 We can <em>wait</em> some time using</p>
-<pre><code class="language-gwion">5::second =&gt; now;
+<pre><code class="language-gwion no_run">5::second =&gt; now;
 </code></pre>
 <h2 id="try-it"><a class="header" href="#try-it">Try it</a></h2>
 <p>Here is the complete example, editable and runnable.<br />
