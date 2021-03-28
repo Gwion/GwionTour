@@ -9,6 +9,7 @@ description = "A tour of Gwion"
 [output.html]
 default-theme = "coal"
 git-repository-url ="https://github.com/Gwion/Gwion"
+additional-css = ["ansi2html.css"]
 
 [output.html.playground]
 line-numbers= false
