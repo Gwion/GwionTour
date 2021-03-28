@@ -41,8 +41,9 @@ function playground_text(playground) {
         var result_block = code_block.querySelector(".result");
         if (!result_block) {
             result_block = document.createElement('code');
-            result_block.className = 'result hljs language-bash';
+            result_block.className = 'result hljs f9 b9';
 
+            result_block.innerHTML = `<code>${result_block.innerHTML}</code>`
             code_block.append(result_block);
         }
 
