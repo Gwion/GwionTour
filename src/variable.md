@@ -1,10 +1,10 @@
 # Declaring a Variable
 
-In the former example, we just created a sinusoidal oscillator,  
+In the former example, we just created a sinusoidal oscillator,
 without a way to access it later.
 
-This time, let's *declare* it (so it has a name we can use),  
-and change a few things (like it's volume and frequency)
+This time, let's declare the oscillator [pronouns are also good to avoid] so it has a usable name,
+and change some things like volume and frequency
 
 ```gwion,editable
 #require Modules

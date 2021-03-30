@@ -1,3 +1,3 @@
 [Hello, World!](./hello_world.md)
-[Declaring a variable](./Variable.md)
+[Declaring a variable](./variable.md)
 [Using Functions](functions.md)

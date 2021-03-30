@@ -26,15 +26,15 @@ new SinOsc ~> dac;
 
 ### Greet the world
 
-Indeed, a *Hello, world* is meant to print something.  
-This is done using the *gack operator* (`<<<` ... `>>>`)
+Indeed, a *Hello, world* has to print something.  
+We do so using the *gack operator* (`<<<` ... `>>>`)
 
 ```gwion,no_run
 <<< "Hello, World!" >>>;
 ```
 
 
-## let time pass
+## Let time pass
 
 Let's face it, we did not make any sound yet:
 No time passed, and if no time passed,

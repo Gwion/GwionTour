@@ -1,6 +1,6 @@
 # Using Functions
 
-The former example raises a question,  
+The former example raises a question,
 will we always need to type
 ```gwion,no_run
 some_freq  => sine.freq;
@@ -27,7 +27,7 @@ fun void play(SinOsc sine, const float freq, const dur d) {
 the `fun` keyword denotes the start of a function declaration.
 
 the *return type* of the function follows.  
-here the function returns nothing, so it is declared as `void`.  
+here the function returns nothing, we declare it as `void`.  
 
 After that there is the function name, `play` in this case.
 
@@ -77,7 +77,3 @@ play(sine, 220, .5::second);
 play(sine, 220, .5::second);
 play(sine, 440, second);
 ```
-
-
-
-
