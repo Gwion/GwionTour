@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="hello_world.html">Hello, World!</a></li><li class="chapter-item expanded affix "><a href="Variable.html">Declaring a variable</a></li><li class="chapter-item expanded affix "><a href="functions.html">Using Functions</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="hello_world.html">Hello, World!</a></li><li class="chapter-item expanded affix "><a href="variable.html">Declaring a variable</a></li><li class="chapter-item expanded affix "><a href="functions.html">Using Functions</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -187,11 +187,11 @@ new SinOsc ~&gt; dac;
 <p>the <code>SinOsc</code> class comes from the <code>Modules</code> plugin</p>
 </blockquote>
 <h3 id="greet-the-world"><a class="header" href="#greet-the-world">Greet the world</a></h3>
-<p>Indeed, a <em>Hello, world</em> is meant to print something.<br />
-This is done using the <em>gack operator</em> (<code>&lt;&lt;&lt;</code> ... <code>&gt;&gt;&gt;</code>)</p>
+<p>Indeed, a <em>Hello, world</em> has to print something.<br />
+We do so using the <em>gack operator</em> (<code>&lt;&lt;&lt;</code> ... <code>&gt;&gt;&gt;</code>)</p>
 <pre><code class="language-gwion no_run">&lt;&lt;&lt; &quot;Hello, World!&quot; &gt;&gt;&gt;;
 </code></pre>
-<h2 id="let-time-pass"><a class="header" href="#let-time-pass">let time pass</a></h2>
+<h2 id="let-time-pass"><a class="header" href="#let-time-pass">Let time pass</a></h2>
 <p>Let's face it, we did not make any sound yet:
 No time passed, and if no time passed,
 there can't have been any sound.
@@ -210,10 +210,10 @@ new SinOsc ~&gt; dac;
 5::second =&gt; now;
 </code></pre>
 <h1 id="declaring-a-variable"><a class="header" href="#declaring-a-variable">Declaring a Variable</a></h1>
-<p>In the former example, we just created a sinusoidal oscillator,<br />
+<p>In the former example, we just created a sinusoidal oscillator,
 without a way to access it later.</p>
-<p>This time, let's <em>declare</em> it (so it has a name we can use),<br />
-and change a few things (like it's volume and frequency)</p>
+<p>This time, let's declare the oscillator [pronouns are also good to avoid] so it has a usable name,
+and change some things like volume and frequency</p>
 <pre><code class="language-gwion editable">#require Modules
 
 &lt;&lt;&lt; &quot;Hello, World!&quot; &gt;&gt;&gt;;
@@ -246,7 +246,7 @@ var SinOsc sine ~&gt; dac;
 2::second =&gt; now;
 </code></pre>
 <h1 id="using-functions"><a class="header" href="#using-functions">Using Functions</a></h1>
-<p>The former example raises a question,<br />
+<p>The former example raises a question,
 will we always need to type</p>
 <pre><code class="language-gwion no_run">some_freq  =&gt; sine.freq;
 some_duration =&gt; now;
@@ -263,7 +263,7 @@ Let's write it</p>
 <h3 id="what-does-this-mean"><a class="header" href="#what-does-this-mean">What does this mean?</a></h3>
 <p>the <code>fun</code> keyword denotes the start of a function declaration.</p>
 <p>the <em>return type</em> of the function follows.<br />
-here the function returns nothing, so it is declared as <code>void</code>.</p>
+here the function returns nothing, we declare it as <code>void</code>.</p>
 <p>After that there is the function name, <code>play</code> in this case.</p>
 <p>What follows is the argument list.<br />
 A function argument syntax is as follow:</p>
