@@ -1,5 +1,6 @@
 ace.define("ace/mode/gwion_highlight_rules", ["require", "exports", "module", "ace/lib/oop", "ace/mode/text_highlight_rules"], function(e, t, n) {
     "use strict";
+    var interp = 0;
     var r = e("../lib/oop")
       , i = e("./text_highlight_rules").TextHighlightRules
       , s = /\\(?:[nrt0'"\\]|x[\da-fA-F]{2}|u\{[\da-fA-F]{6}\})/.source
@@ -7,7 +8,7 @@ ace.define("ace/mode/gwion_highlight_rules", ["require", "exports", "module", "a
         this.$rules = {
             start: [{
                 token: "variable.other.source.gwion",
-                regex: "'[a-zA-Z_][a-zA-Z0-9_]*(?![\\'])"
+                regex: "'[a-zA-Z_][a-zA-Z0-9_]*"
             }, {
                 token: "string.quoted.single.source.gwion",
                 regex: "'(?:[^'\\\\]|" + s + ")'"
@@ -56,13 +57,13 @@ ace.define("ace/mode/gwion_highlight_rules", ["require", "exports", "module", "a
                 regex: "\\b[a-zA-Z_][\\w\\d]*::"
             }, {
                 token: "keyword.source.gwion",
-                regex: "\\b(?:abstract|defer|repeat|foreach|alignof|as|become|box|break|catch|continue|const|crate|default|do|else|enum|for|final|if|extends|match|case|private|protect|global|late|return|self|static|public|class|struct|fun|operator|funcdef|trait|union|where|when|while|new)\\b"
+                regex: "\\b(?:abstract|defer|repeat|foreach|break|continue|const|var|late|do|else|enum|for|final|if|extends|match|case|private|protect|global|return|self|static|public|class|struct|fun|operator|funcdef|trait|union|where|when|while|new)\\b"
             }, {
                 token: "storage.type.source.gwion",
-                regex: "\\b(?:Self|isize|usize|char|bool|u8|u16|u32|u64|u128|f16|f32|f64|i8|i16|i32|i64|i128|str|option|either|c_float|c_double|c_void|FILE|fpos_t|DIR|dirent|c_char|c_schar|c_uchar|c_short|c_ushort|c_int|c_uint|c_long|c_ulong|size_t|ptrdiff_t|clock_t|time_t|c_longlong|c_ulonglong|intptr_t|uintptr_t|off_t|dev_t|ino_t|pid_t|mode_t|ssize_t)\\b"
+                regex: "\\b(?:Self|int|float|string|Event|Object|bool|Option|Ref|Array)\\b"
             }, {
                 token: "variable.language.source.gwion",
-                regex: "\\bself\\b"
+                regex: "\\b(?:self|this|me|adc|dac)\\b"
             }, {
                 token: "comment.line.doc.source.gwion",
                 regex: "#!!.*$"
@@ -74,7 +75,7 @@ ace.define("ace/mode/gwion_highlight_rules", ["require", "exports", "module", "a
                 regex: "#!.*$"
             }, {
                 token: "keyword.operator",
-                regex: /\$|[-=]>|[-+%^=!&|<>~:]=?|[*/](?![*/])=?/
+                regex: /\$|[-=]>|[-+%^=!&|<>~:]=?|[*/](?![*/>])=?/
             }, {
                 token: "punctuation.operator",
                 regex: /[?:,;.]/
@@ -89,11 +90,10 @@ ace.define("ace/mode/gwion_highlight_rules", ["require", "exports", "module", "a
                 regex: "\\b(?:true|false|maybe|None)\\b"
             }, {
                 token: "support.constant.source.gwion",
-                regex: "\\b(?:EXIT_FAILURE|EXIT_SUCCESS|RAND_MAX|EOF|SEEK_SET|SEEK_CUR|SEEK_END|_IOFBF|_IONBF|_IOLBF|BUFSIZ|FOPEN_MAX|FILENAME_MAX|L_tmpnam|TMP_MAX|O_RDONLY|O_WRONLY|O_RDWR|O_APPEND|O_CREAT|O_EXCL|O_TRUNC|S_IFIFO|S_IFCHR|S_IFBLK|S_IFDIR|S_IFREG|S_IFMT|S_IEXEC|S_IWRITE|S_IREAD|S_IRWXU|S_IXUSR|S_IWUSR|S_IRUSR|F_OK|R_OK|W_OK|X_OK|STDIN_FILENO|STDOUT_FILENO|STDERR_FILENO)\\b"
+                regex: "\\b(?:pi|EXIT_FAILURE|EXIT_SUCCESS|RAND_MAX|EOF|SEEK_SET|SEEK_CUR|SEEK_END|_IOFBF|_IONBF|_IOLBF|BUFSIZ|FOPEN_MAX|FILENAME_MAX|L_tmpnam|TMP_MAX|O_RDONLY|O_WRONLY|O_RDWR|O_APPEND|O_CREAT|O_EXCL|O_TRUNC|S_IFIFO|S_IFCHR|S_IFBLK|S_IFDIR|S_IFREG|S_IFMT|S_IEXEC|S_IWRITE|S_IREAD|S_IRWXU|S_IXUSR|S_IWUSR|S_IRUSR|F_OK|R_OK|W_OK|X_OK|STDIN_FILENO|STDOUT_FILENO|STDERR_FILENO)\\b"
             }, {
                 token: "meta.preprocessor.source.gwion",
-//                regex: "\\b\\w\\(\\w\\)*!|#\\[[\\w=\\(\\)_]+\\]\\b"
-                regex : "#\\s*(?:include|require|pragma|__line__|__file__|__func__|define|undef)\\b"
+                regex : "#\\s*(?:include|require|pragma|__line__|__file__|__func__|ifdef|undef|define|undef)\\b"
             }, {
                 token: "constant.numeric.source.gwion",
                 regex: /\b(?:0x[a-fA-F0-9_]+|0o[0-7_]+|0b[01_]+|[0-9][0-9_]*(?!\.))(?:[iu](?:size|8|16|32|64|128))?\b/
