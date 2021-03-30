@@ -4,7 +4,7 @@ Let's get started using gwion!
 
 ## A simple example, step by step
 
-We are gonna write a typical Gwion *Hello, World!*
+We are going to write a typical Gwion *Hello, World!*
 
 
 ### Prepare to make sound
