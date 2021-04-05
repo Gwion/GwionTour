@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="hello_world.html">Hello, World!</a></li><li class="chapter-item expanded affix "><a href="variable.html">Declaring a variable</a></li><li class="chapter-item expanded affix "><a href="functions.html">Using Functions</a></li><li class="chapter-item expanded affix "><a href="experience0.html">A little psycho-acoustic experiment</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="hello_world.html">Hello, World!</a></li><li class="chapter-item expanded affix "><a href="variable.html">Declaring a variable</a></li><li class="chapter-item expanded affix "><a href="functions.html">Using Functions</a></li><li class="chapter-item expanded affix "><a href="experience0.html">A little psycho-acoustic experiment</a></li><li class="chapter-item expanded affix "><a href="arguments-basic.html">Basic Argument handling</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -309,14 +309,14 @@ is only perceptual.</p>
 <pre><code class="language-gwion editable">#require Math
 #require Modules
 
-#define NCYCLES 4
+#define NCYCLES 2
 
-.5 =&gt; var float compensate;
+1 =&gt; var float compensate;
 second =&gt; var dur d;
 const SinOsc s ~&gt; dac;
 
 while(d &gt;= samp) {
-  repeat(NCYCLES * compensate $ int) {
+  repeat(NCYCLES * compensate) {
     Math.rand2f(220, 880) =&gt; s.freq;
     d =&gt; now;
   }
@@ -341,6 +341,57 @@ is the median between the low and the bounds.</p>
 in our code<br />
 (this helps with configurability too)</p>
 </blockquote>
+<h1 id="basic-argument-handling"><a class="header" href="#basic-argument-handling">Basic Argument handling</a></h1>
+<p>Let's look at this snippet</p>
+<pre><code class="language-gwion editable">#require Std
+#require Math
+#require Modules
+
+fun int get_ncycles() {
+  if(me.args())
+    return me.arg(0) =&gt; Std.atoi;
+  return 2;
+}
+
+fun float get_user_duration() {
+  if(me.args() &gt; 1)
+    return me.arg(1) =&gt; Std.atof;
+  return 1;
+}
+
+fun dur get_duration() {
+  return get_user_duration()::second;
+}
+
+
+get_ncycles() =&gt; const int ncycles;
+get_duration() =&gt; var dur duration;
+
+1 =&gt; var int compensate;
+const SinOsc s ~&gt; dac;
+
+while(duration &gt;= samp) {
+  repeat(ncycles * compensate) {
+    Math.rand2f(220, 880) =&gt; s.freq;
+    duration =&gt; now;
+  }
+  duration/2. =&gt; duration;
+  2 *=&gt; compensate;
+}
+</code></pre>
+<p>Yes, it's almost the same as the previous one,
+but this one provides argument handling.</p>
+<p>For instance this function:</p>
+<pre><code class="language-gwion no_run">fun int get_ncycles() {
+  if(me.args())
+    return me.arg(0) =&gt; Std.atoi;
+  return 2;
+}
+</code></pre>
+<p>checks if the file was called with any arguments, using <code>me.args()</code>.</p>
+<p>If there is at least one argument, we get it as a string, using <code>me.arg(0)</code> since we want the first argument,
+then we get the <code>int</code> value out of it, with <code>Std.atoi</code>.</p>
+<p>If there is no argument, it defaults to <code>2</code>.</p>
 
                     </main>
 

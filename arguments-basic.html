@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Using Functions - GwionTour</title>
+        <title>Basic Argument handling - GwionTour</title>
         
         
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="hello_world.html">Hello, World!</a></li><li class="chapter-item expanded affix "><a href="variable.html">Declaring a variable</a></li><li class="chapter-item expanded affix "><a href="functions.html" class="active">Using Functions</a></li><li class="chapter-item expanded affix "><a href="experience0.html">A little psycho-acoustic experiment</a></li><li class="chapter-item expanded affix "><a href="arguments-basic.html">Basic Argument handling</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="hello_world.html">Hello, World!</a></li><li class="chapter-item expanded affix "><a href="variable.html">Declaring a variable</a></li><li class="chapter-item expanded affix "><a href="functions.html">Using Functions</a></li><li class="chapter-item expanded affix "><a href="experience0.html">A little psycho-acoustic experiment</a></li><li class="chapter-item expanded affix "><a href="arguments-basic.html" class="active">Basic Argument handling</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -167,77 +167,68 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="using-functions"><a class="header" href="#using-functions">Using Functions</a></h1>
-<p>The former example raises a question,
-will we always need to type</p>
-<pre><code class="language-gwion no_run">some_freq  =&gt; sine.freq;
-some_duration =&gt; now;
-</code></pre>
-<p>everytime we want to set the frequency and advance time?</p>
-<h2 id="functions-as-mean-to-encapsulate-behavior"><a class="header" href="#functions-as-mean-to-encapsulate-behavior">Functions as mean to encapsulate behavior</a></h2>
-<p>Well, no: this can all fit in a function.
-Let's write it</p>
-<pre><code class="language-gwion no_run">fun void play(SinOsc sine, const float freq, const dur d) {
-  freq =&gt; sine.freq;
-  d =&gt; now;
-}
-</code></pre>
-<h3 id="what-does-this-mean"><a class="header" href="#what-does-this-mean">What does this mean?</a></h3>
-<p>the <code>fun</code> keyword denotes the start of a function declaration.</p>
-<p>the <em>return type</em> of the function follows.<br />
-here the function returns nothing, we declare it as <code>void</code>.</p>
-<p>After that there is the function name, <code>play</code> in this case.</p>
-<p>What follows is the argument list.<br />
-A function argument syntax is as follow:</p>
-<pre><code class="language-c++">Type name
-</code></pre>
-<h3 id="a-simple-example-function"><a class="header" href="#a-simple-example-function">A simple example function</a></h3>
-<p>Let's write a simple <em>adder</em></p>
-<pre><code class="language-gwion no_run">fun int add(int a, int b) {
-  return a + b;
-}
-</code></pre>
-<p>This time the function returns an int,
-so we change the return type accordingly.</p>
-<p>Here is how we call it</p>
-<pre><code class="language-gwion editable">fun int add(int a, int b) {
-  return a + b;
-}
-&lt;&lt;&lt; add(1, 2) &gt;&gt;&gt;;
+                        <h1 id="basic-argument-handling"><a class="header" href="#basic-argument-handling">Basic Argument handling</a></h1>
+<p>Let's look at this snippet</p>
+<pre><code class="language-gwion editable">#require Std
+#require Math
+#require Modules
 
-#! alternatively
-&lt;&lt;&lt; (2, 3) =&gt; add &gt;&gt;&gt;;
-</code></pre>
-<h2 id="a-example-using-functions"><a class="header" href="#a-example-using-functions">A example using functions</a></h2>
-<pre><code class="language-gwion editable">#require Modules
-
-fun void play(SinOsc sine, const float freq, const dur d) {
-  freq =&gt; sine.freq;
-  d =&gt; now;
+fun int get_ncycles() {
+  if(me.args())
+    return me.arg(0) =&gt; Std.atoi;
+  return 2;
 }
 
-var SinOsc sine ~&gt; dac;
+fun float get_user_duration() {
+  if(me.args() &gt; 1)
+    return me.arg(1) =&gt; Std.atof;
+  return 1;
+}
 
-play(sine, 440, second);
-play(sine, 220, .5::second);
-play(sine, 220, .5::second);
-play(sine, 440, second);
+fun dur get_duration() {
+  return get_user_duration()::second;
+}
+
+
+get_ncycles() =&gt; const int ncycles;
+get_duration() =&gt; var dur duration;
+
+1 =&gt; var int compensate;
+const SinOsc s ~&gt; dac;
+
+while(duration &gt;= samp) {
+  repeat(ncycles * compensate) {
+    Math.rand2f(220, 880) =&gt; s.freq;
+    duration =&gt; now;
+  }
+  duration/2. =&gt; duration;
+  2 *=&gt; compensate;
+}
 </code></pre>
+<p>Yes, it's almost the same as the previous one,
+but this one provides argument handling.</p>
+<p>For instance this function:</p>
+<pre><code class="language-gwion no_run">fun int get_ncycles() {
+  if(me.args())
+    return me.arg(0) =&gt; Std.atoi;
+  return 2;
+}
+</code></pre>
+<p>checks if the file was called with any arguments, using <code>me.args()</code>.</p>
+<p>If there is at least one argument, we get it as a string, using <code>me.arg(0)</code> since we want the first argument,
+then we get the <code>int</code> value out of it, with <code>Std.atoi</code>.</p>
+<p>If there is no argument, it defaults to <code>2</code>.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="variable.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="experience0.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="experience0.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -247,15 +238,11 @@ play(sine, 440, second);
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="variable.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="experience0.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a rel="next" href="experience0.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 

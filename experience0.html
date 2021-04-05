@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="hello_world.html">Hello, World!</a></li><li class="chapter-item expanded affix "><a href="variable.html">Declaring a variable</a></li><li class="chapter-item expanded affix "><a href="functions.html">Using Functions</a></li><li class="chapter-item expanded affix "><a href="experience0.html" class="active">A little psycho-acoustic experiment</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="hello_world.html">Hello, World!</a></li><li class="chapter-item expanded affix "><a href="variable.html">Declaring a variable</a></li><li class="chapter-item expanded affix "><a href="functions.html">Using Functions</a></li><li class="chapter-item expanded affix "><a href="experience0.html" class="active">A little psycho-acoustic experiment</a></li><li class="chapter-item expanded affix "><a href="arguments-basic.html">Basic Argument handling</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -175,14 +175,14 @@ is only perceptual.</p>
 <pre><code class="language-gwion editable">#require Math
 #require Modules
 
-#define NCYCLES 4
+#define NCYCLES 2
 
-.5 =&gt; var float compensate;
+1 =&gt; var float compensate;
 second =&gt; var dur d;
 const SinOsc s ~&gt; dac;
 
 while(d &gt;= samp) {
-  repeat(NCYCLES * compensate $ int) {
+  repeat(NCYCLES * compensate) {
     Math.rand2f(220, 880) =&gt; s.freq;
     d =&gt; now;
   }
@@ -219,6 +219,10 @@ in our code<br />
                         
 
                         
+                            <a rel="next" href="arguments-basic.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -232,6 +236,10 @@ in our code<br />
                     </a>
                 
 
+                
+                    <a rel="next" href="arguments-basic.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                 
             </nav>
 
