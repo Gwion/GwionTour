@@ -3,9 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>GwionTour</title>
-        
-        <meta name="robots" content="noindex" />
+        <title>A little psycho-acoustic experiment - GwionTour</title>
         
         
 
@@ -97,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="hello_world.html">Hello, World!</a></li><li class="chapter-item expanded affix "><a href="variable.html">Declaring a variable</a></li><li class="chapter-item expanded affix "><a href="functions.html">Using Functions</a></li><li class="chapter-item expanded affix "><a href="experience0.html">A little psycho-acoustic experiment</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="hello_world.html">Hello, World!</a></li><li class="chapter-item expanded affix "><a href="variable.html">Declaring a variable</a></li><li class="chapter-item expanded affix "><a href="functions.html">Using Functions</a></li><li class="chapter-item expanded affix "><a href="experience0.html" class="active">A little psycho-acoustic experiment</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -169,139 +167,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="a-gwion-hello-world"><a class="header" href="#a-gwion-hello-world">A Gwion 'Hello, World'</a></h1>
-<p>Let's get started using gwion!</p>
-<h2 id="a-simple-example-step-by-step"><a class="header" href="#a-simple-example-step-by-step">A simple example, step by step</a></h2>
-<p>We are going to write a typical Gwion <em>Hello, World!</em></p>
-<h3 id="prepare-to-make-sound"><a class="header" href="#prepare-to-make-sound">Prepare to make sound</a></h3>
-<p>In Gwion, a program typically makes sound.</p>
-<h4 id="request-needed-plugin"><a class="header" href="#request-needed-plugin">Request needed plugin</a></h4>
-<p>Now we create a Sinusoidal generator
-and connect it to thee audio output
-(<code>dac</code> stands for <em>Digital to Audio Converter</em>)
-using the <code>~&gt;</code> operator.</p>
-<pre><code class="language-gwion no_run">#require Modules
-new SinOsc ~&gt; dac;
-</code></pre>
-<blockquote>
-<p>the <code>SinOsc</code> class comes from the <code>Modules</code> plugin</p>
-</blockquote>
-<h3 id="greet-the-world"><a class="header" href="#greet-the-world">Greet the world</a></h3>
-<p>Indeed, a <em>Hello, world</em> has to print something.<br />
-We do so using the <em>gack operator</em> (<code>&lt;&lt;&lt;</code> ... <code>&gt;&gt;&gt;</code>)</p>
-<pre><code class="language-gwion no_run">&lt;&lt;&lt; &quot;Hello, World!&quot; &gt;&gt;&gt;;
-</code></pre>
-<h2 id="let-time-pass"><a class="header" href="#let-time-pass">Let time pass</a></h2>
-<p>Let's face it, we did not make any sound yet:
-No time passed, and if no time passed,
-there can't have been any sound.
-We can <em>wait</em> some time using</p>
-<pre><code class="language-gwion no_run">5::second =&gt; now;
-</code></pre>
-<h2 id="try-it"><a class="header" href="#try-it">Try it</a></h2>
-<p>Here is the complete example, editable and runnable.<br />
-Have fun!</p>
-<pre><code class="language-gwion editable">#require Modules
-
-&lt;&lt;&lt; &quot;Hello, World!&quot; &gt;&gt;&gt;;
-
-new SinOsc ~&gt; dac;
-
-5::second =&gt; now;
-</code></pre>
-<h1 id="declaring-a-variable"><a class="header" href="#declaring-a-variable">Declaring a Variable</a></h1>
-<p>In the former example, we just created a sinusoidal oscillator,
-without a way to access it later.</p>
-<p>This time, let's declare the oscillator [pronouns are also good to avoid] so it has a usable name,
-and change some things like volume and frequency</p>
-<pre><code class="language-gwion editable">#require Modules
-
-&lt;&lt;&lt; &quot;Hello, World!&quot; &gt;&gt;&gt;;
-
-#! create a Sinusoidal oscillator, named sine
-#! and connect it to the speakers
-var SinOsc sine ~&gt; dac;
-
-#! let some time pass
-1::second =&gt; now;
-
-#! change the frequency
-220 =&gt; sine.freq;
-
-#! let some time pass
-1::second =&gt; now;
-
-#! change the volume
-0.1 =&gt; sine.amp;
-.5::second =&gt; now;
-
-#! change the volume, again
-0.6 =&gt; sine.amp;
-.5::second =&gt; now;
-
-#! change the frequency
-440 =&gt; sine.freq;
-
-#! let some time pass
-2::second =&gt; now;
-</code></pre>
-<h1 id="using-functions"><a class="header" href="#using-functions">Using Functions</a></h1>
-<p>The former example raises a question,
-will we always need to type</p>
-<pre><code class="language-gwion no_run">some_freq  =&gt; sine.freq;
-some_duration =&gt; now;
-</code></pre>
-<p>everytime we want to set the frequency and advance time?</p>
-<h2 id="functions-as-mean-to-encapsulate-behavior"><a class="header" href="#functions-as-mean-to-encapsulate-behavior">Functions as mean to encapsulate behavior</a></h2>
-<p>Well, no: this can all fit in a function.
-Let's write it</p>
-<pre><code class="language-gwion no_run">fun void play(SinOsc sine, const float freq, const dur d) {
-  freq =&gt; sine.freq;
-  d =&gt; now;
-}
-</code></pre>
-<h3 id="what-does-this-mean"><a class="header" href="#what-does-this-mean">What does this mean?</a></h3>
-<p>the <code>fun</code> keyword denotes the start of a function declaration.</p>
-<p>the <em>return type</em> of the function follows.<br />
-here the function returns nothing, we declare it as <code>void</code>.</p>
-<p>After that there is the function name, <code>play</code> in this case.</p>
-<p>What follows is the argument list.<br />
-A function argument syntax is as follow:</p>
-<pre><code class="language-c++">Type name
-</code></pre>
-<h3 id="a-simple-example-function"><a class="header" href="#a-simple-example-function">A simple example function</a></h3>
-<p>Let's write a simple <em>adder</em></p>
-<pre><code class="language-gwion no_run">fun int add(int a, int b) {
-  return a + b;
-}
-</code></pre>
-<p>This time the function returns an int,
-so we change the return type accordingly.</p>
-<p>Here is how we call it</p>
-<pre><code class="language-gwion editable">fun int add(int a, int b) {
-  return a + b;
-}
-&lt;&lt;&lt; add(1, 2) &gt;&gt;&gt;;
-
-#! alternatively
-&lt;&lt;&lt; (2, 3) =&gt; add &gt;&gt;&gt;;
-</code></pre>
-<h2 id="a-example-using-functions"><a class="header" href="#a-example-using-functions">A example using functions</a></h2>
-<pre><code class="language-gwion editable">#require Modules
-
-fun void play(SinOsc sine, const float freq, const dur d) {
-  freq =&gt; sine.freq;
-  d =&gt; now;
-}
-
-var SinOsc sine ~&gt; dac;
-
-play(sine, 440, second);
-play(sine, 220, .5::second);
-play(sine, 220, .5::second);
-play(sine, 440, second);
-</code></pre>
-<h1 id="a-little-psycho-acoustic-experiment"><a class="header" href="#a-little-psycho-acoustic-experiment">A little psycho-acoustic experiment</a></h1>
+                        <h1 id="a-little-psycho-acoustic-experiment"><a class="header" href="#a-little-psycho-acoustic-experiment">A little psycho-acoustic experiment</a></h1>
 <p>Let's now try something that will put in evidence
 that the distinction between melody and noise
 is only perceptual.</p>
@@ -347,6 +213,10 @@ in our code<br />
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
+                            <a rel="prev" href="functions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
 
                         
 
@@ -356,6 +226,10 @@ in our code<br />
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="functions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                 
 
                 
@@ -397,14 +271,6 @@ in our code<br />
         <!-- Custom JS scripts -->
         
 
-        
-        
-        <script type="text/javascript">
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
-        
         
 
     </body>
