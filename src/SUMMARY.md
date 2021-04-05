@@ -2,3 +2,4 @@
 [Declaring a variable](./variable.md)
 [Using Functions](functions.md)
 [A little psycho-acoustic experiment](experience0.md)
+[Basic Argument handling](arguments-basic.md)

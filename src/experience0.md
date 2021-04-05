@@ -10,14 +10,14 @@ Look at the snippet (and listen the result)
 #require Math
 #require Modules
 
-#define NCYCLES 4
+#define NCYCLES 2
 
-.5 => var float compensate;
+1 => var float compensate;
 second => var dur d;
 const SinOsc s ~> dac;
 
 while(d >= samp) {
-  repeat(NCYCLES * compensate $ int) {
+  repeat(NCYCLES * compensate) {
     Math.rand2f(220, 880) => s.freq;
     d => now;
   }
