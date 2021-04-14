@@ -12,7 +12,7 @@ Look at the snippet (and listen the result)
 
 #define NCYCLES 2
 
-1 => var float compensate;
+1 => var int compensate;
 second => var dur d;
 const SinOsc s ~> dac;
 
