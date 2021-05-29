@@ -180,7 +180,7 @@
 and connect it to thee audio output
 (<code>dac</code> stands for <em>Digital to Audio Converter</em>)
 using the <code>~&gt;</code> operator.</p>
-<pre><code class="language-gwion no_run">#require Modules
+<pre><code class="language-gwion no_run">#import Modules
 new SinOsc ~&gt; dac;
 </code></pre>
 <blockquote>
@@ -201,7 +201,7 @@ We can <em>wait</em> some time using</p>
 <h2 id="try-it"><a class="header" href="#try-it">Try it</a></h2>
 <p>Here is the complete example, editable and runnable.<br />
 Have fun!</p>
-<pre><code class="language-gwion editable">#require Modules
+<pre><code class="language-gwion editable">#import Modules
 
 &lt;&lt;&lt; &quot;Hello, World!&quot; &gt;&gt;&gt;;
 
@@ -209,12 +209,12 @@ new SinOsc ~&gt; dac;
 
 5::second =&gt; now;
 </code></pre>
-<h1 id="declaring-a-variable"><a class="header" href="#declaring-a-variable">Declaring a Variable</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="declaring-a-variable"><a class="header" href="#declaring-a-variable">Declaring a Variable</a></h1>
 <p>In the former example, we just created a sinusoidal oscillator,
 without a way to access it later.</p>
 <p>This time, let's declare the oscillator [pronouns are also good to avoid] so it has a usable name,
 and change some things like volume and frequency</p>
-<pre><code class="language-gwion editable">#require Modules
+<pre><code class="language-gwion editable">#import Modules
 
 &lt;&lt;&lt; &quot;Hello, World!&quot; &gt;&gt;&gt;;
 
@@ -245,7 +245,7 @@ var SinOsc sine ~&gt; dac;
 #! let some time pass
 2::second =&gt; now;
 </code></pre>
-<h1 id="using-functions"><a class="header" href="#using-functions">Using Functions</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="using-functions"><a class="header" href="#using-functions">Using Functions</a></h1>
 <p>The former example raises a question,
 will we always need to type</p>
 <pre><code class="language-gwion no_run">some_freq  =&gt; sine.freq;
@@ -287,7 +287,7 @@ so we change the return type accordingly.</p>
 &lt;&lt;&lt; (2, 3) =&gt; add &gt;&gt;&gt;;
 </code></pre>
 <h2 id="a-example-using-functions"><a class="header" href="#a-example-using-functions">A example using functions</a></h2>
-<pre><code class="language-gwion editable">#require Modules
+<pre><code class="language-gwion editable">#import Modules
 
 fun void play(SinOsc sine, const float freq, const dur d) {
   freq =&gt; sine.freq;
@@ -301,13 +301,13 @@ play(sine, 220, .5::second);
 play(sine, 220, .5::second);
 play(sine, 440, second);
 </code></pre>
-<h1 id="a-little-psycho-acoustic-experiment"><a class="header" href="#a-little-psycho-acoustic-experiment">A little psycho-acoustic experiment</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="a-little-psycho-acoustic-experiment"><a class="header" href="#a-little-psycho-acoustic-experiment">A little psycho-acoustic experiment</a></h1>
 <p>Let's now try something that will put in evidence
 that the distinction between melody and noise
 is only perceptual.</p>
 <p>Look at the snippet (and listen the result)</p>
-<pre><code class="language-gwion editable">#require Math
-#require Modules
+<pre><code class="language-gwion editable">#import Math
+#import Modules
 
 #define NCYCLES 2
 
@@ -341,11 +341,11 @@ is the median between the low and the bounds.</p>
 in our code<br />
 (this helps with configurability too)</p>
 </blockquote>
-<h1 id="basic-argument-handling"><a class="header" href="#basic-argument-handling">Basic Argument handling</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="basic-argument-handling"><a class="header" href="#basic-argument-handling">Basic Argument handling</a></h1>
 <p>Let's look at this snippet</p>
-<pre><code class="language-gwion editable">#require Std
-#require Math
-#require Modules
+<pre><code class="language-gwion editable">#import Std
+#import Math
+#import Modules
 
 fun int get_ncycles() {
   if(me.args())
