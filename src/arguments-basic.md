@@ -3,9 +3,9 @@
 Let's look at this snippet
 
 ```gwion,editable
-#require Std
-#require Math
-#require Modules
+#import Std
+#import Math
+#import Modules
 
 fun int get_ncycles() {
   if(me.args())

@@ -19,7 +19,7 @@ and connect it to thee audio output
 using the `~>` operator.
 
 ```gwion,no_run
-#require Modules
+#import Modules
 new SinOsc ~> dac;
 ```
 > the `SinOsc` class comes from the `Modules` plugin
@@ -52,7 +52,7 @@ Here is the complete example, editable and runnable.
 Have fun!
 
 ```gwion,editable
-#require Modules
+#import Modules
 
 <<< "Hello, World!" >>>;
 

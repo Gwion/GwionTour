@@ -7,7 +7,7 @@ This time, let's declare the oscillator [pronouns are also good to avoid] so it 
 and change some things like volume and frequency
 
 ```gwion,editable
-#require Modules
+#import Modules
 
 <<< "Hello, World!" >>>;
 

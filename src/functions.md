@@ -63,7 +63,7 @@ fun int add(int a, int b) {
 ## A example using functions
 
 ```gwion,editable
-#require Modules
+#import Modules
 
 fun void play(SinOsc sine, const float freq, const dur d) {
   freq => sine.freq;

@@ -7,8 +7,8 @@ is only perceptual.
 Look at the snippet (and listen the result)
 
 ```gwion,editable
-#require Math
-#require Modules
+#import Math
+#import Modules
 
 #define NCYCLES 2
 
