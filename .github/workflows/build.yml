@@ -9,14 +9,24 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
+      - name: Checkout tools repo
+        uses: actions/checkout@v3
+        with:
+          repository: Gwion/GwionSite
+          path: GwionSite
+
+      - name: GwionSite tools
+        run: bash GwionSite/install.sh
 
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v1
         with:
           mdbook-version: 'latest'
 
-      - run: mdbook build
+      - name: Build book
+        run: PATH=$PWD:$PATH make build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
