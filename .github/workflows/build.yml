@@ -20,6 +20,9 @@ jobs:
       - name: GwionSite tools
         run: bash GwionSite/install.sh
 
+      - name: Dependencies
+        run: bash scripts/update.sh
+
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v1
         with:
