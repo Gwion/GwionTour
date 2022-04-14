@@ -263,13 +263,13 @@
 .ef254 { color: #e4e4e4; } .eb254 { background-color: #e4e4e4; }
 .ef255 { color: #eeeeee; } .eb255 { background-color: #eeeeee; }
 
-.f9 { color: #AAAAAA; }
-#.b9 { background-color: #000000; }
+.f9 { color: #000000; }
+.b9 { background-color: #FFFFFF; }
 .f9 > .bold,.bold > .f9, body.f9 > pre > .bold {
   /* Bold is heavy black on white, or bright white
      depending on the default background */
-  color: #FFFFFF;
-  font-weight: normal;
+  color: #000000;
+  font-weight: bold;
 }
 .reverse {
   /* CSS does not support swapping fg and bg colours unfortunately,
