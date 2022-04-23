@@ -12009,7 +12009,7 @@ hljs.registerLanguage('gwion', function () {
         keyword: 'if for foreach repeat while until do break return continue goto spork fork match where when case typeof varloop',
         name: 'true false maybe me null adc dac __func__ __file__ __line__ now vararg this',
         built_in: 'Object Vararg Shred Fork TypedFork UGen Gain Impulse FullRect HalfRect Step ZeroX UsrUGen Event Ptr:[A] string auto void int char float dur time',
-        meta: 'new static global private protect var ref const nonnul',
+        meta: 'new static global private protect var late const none',
     };
 
     var CHAR = {
@@ -12077,7 +12077,7 @@ hljs.registerLanguage('gwion', function () {
 
     var FUNCTION = {
        className: 'function',
-       beginKeywords: 'fun operator',
+       beginKeywords: 'fun operator locale',
        end: /{/,
        excludeEnd: true,
        contains: [
@@ -12136,7 +12136,7 @@ hljs.registerLanguage('gwion', function () {
       keywords: {
         'meta-keyword':   
           'if else elif endif define undef warning error line ' +
-          'pragma ifdef ifndef include'
+          'pragma ifdef ifndef include import include locale'
       }
     };
     return {
