@@ -147,8 +147,8 @@ is only perceptual.</p>
 
 #define NCYCLES 2
 
-1 =&gt; var int compensate;
-second =&gt; var dur d;
+1 :=&gt; var int compensate;
+second :=&gt; var dur d;
 const SinOsc s ~&gt; dac;
 
 while(d &gt;= samp) {
@@ -156,7 +156,7 @@ while(d &gt;= samp) {
     Math.rand2f(220, 880) =&gt; s.freq;
     d =&gt; now;
   }
-  d / 2. =&gt; d;
+  d / 2. :=&gt; d;
   2 *=&gt; compensate;
 }
 </code></pre>
@@ -181,7 +181,7 @@ in our code<br />
 <footer>
 built with <a href="https://github.com/fennecdjay/mdr">mdr</a> and <a href="https://github.com/rust-lang/mdBook/">mdBook</a></br>
 You'll find the source <a href="https://github.com/Gwion/Gwion">here</a>, Luke!
-<p><small>note: privacy guards may interfere with the playground</small></p>
+<small>note: privacy guards may interfere with the playground</small>
 </footer>
 
                     </main>

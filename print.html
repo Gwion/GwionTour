@@ -182,7 +182,7 @@ new SinOsc ~&gt; dac;
 <footer>
 built with <a href="https://github.com/fennecdjay/mdr">mdr</a> and <a href="https://github.com/rust-lang/mdBook/">mdBook</a></br>
 You'll find the source <a href="https://github.com/Gwion/Gwion">here</a>, Luke!
-<p><small>note: privacy guards may interfere with the playground</small></p>
+<small>note: privacy guards may interfere with the playground</small>
 </footer>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="declaring-a-variable"><a class="header" href="#declaring-a-variable">Declaring a Variable</a></h1>
 <p>In the former example, we just created a sinusoidal oscillator,
@@ -224,7 +224,7 @@ var SinOsc sine ~&gt; dac;
 <footer>
 built with <a href="https://github.com/fennecdjay/mdr">mdr</a> and <a href="https://github.com/rust-lang/mdBook/">mdBook</a></br>
 You'll find the source <a href="https://github.com/Gwion/Gwion">here</a>, Luke!
-<p><small>note: privacy guards may interfere with the playground</small></p>
+<small>note: privacy guards may interfere with the playground</small>
 </footer>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="using-functions"><a class="header" href="#using-functions">Using Functions</a></h1>
 <p>The former example raises a question,
@@ -286,7 +286,7 @@ play(sine, 440, second);
 <footer>
 built with <a href="https://github.com/fennecdjay/mdr">mdr</a> and <a href="https://github.com/rust-lang/mdBook/">mdBook</a></br>
 You'll find the source <a href="https://github.com/Gwion/Gwion">here</a>, Luke!
-<p><small>note: privacy guards may interfere with the playground</small></p>
+<small>note: privacy guards may interfere with the playground</small>
 </footer>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="a-little-psycho-acoustic-experiment"><a class="header" href="#a-little-psycho-acoustic-experiment">A little psycho-acoustic experiment</a></h1>
 <p>Let's now try something that will put in evidence
@@ -298,8 +298,8 @@ is only perceptual.</p>
 
 #define NCYCLES 2
 
-1 =&gt; var int compensate;
-second =&gt; var dur d;
+1 :=&gt; var int compensate;
+second :=&gt; var dur d;
 const SinOsc s ~&gt; dac;
 
 while(d &gt;= samp) {
@@ -307,7 +307,7 @@ while(d &gt;= samp) {
     Math.rand2f(220, 880) =&gt; s.freq;
     d =&gt; now;
   }
-  d / 2. =&gt; d;
+  d / 2. :=&gt; d;
   2 *=&gt; compensate;
 }
 </code></pre>
@@ -332,7 +332,7 @@ in our code<br />
 <footer>
 built with <a href="https://github.com/fennecdjay/mdr">mdr</a> and <a href="https://github.com/rust-lang/mdBook/">mdBook</a></br>
 You'll find the source <a href="https://github.com/Gwion/Gwion">here</a>, Luke!
-<p><small>note: privacy guards may interfere with the playground</small></p>
+<small>note: privacy guards may interfere with the playground</small>
 </footer>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="basic-argument-handling"><a class="header" href="#basic-argument-handling">Basic Argument handling</a></h1>
 <p>Let's look at this snippet</p>
@@ -357,18 +357,18 @@ fun dur get_duration() {
 }
 
 
-get_ncycles() =&gt; const int ncycles;
-get_duration() =&gt; var dur duration;
+get_ncycles() :=&gt; const int ncycles;
+get_duration() :=&gt; var dur duration;
 
-1 =&gt; var int compensate;
+1 :=&gt; var int compensate;
 const SinOsc s ~&gt; dac;
 
 while(duration &gt;= samp) {
   repeat(ncycles * compensate) {
-    Math.rand2f(220, 880) =&gt; s.freq;
+    Math.rand2f(220, 880) :=&gt; s.freq;
     duration =&gt; now;
   }
-  duration/2. =&gt; duration;
+  duration/2. :=&gt; duration;
   2 *=&gt; compensate;
 }
 </code></pre>
@@ -389,7 +389,7 @@ then we get the <code>int</code> value out of it, with <code>Std.atoi</code>.</p
 <footer>
 built with <a href="https://github.com/fennecdjay/mdr">mdr</a> and <a href="https://github.com/rust-lang/mdBook/">mdBook</a></br>
 You'll find the source <a href="https://github.com/Gwion/Gwion">here</a>, Luke!
-<p><small>note: privacy guards may interfere with the playground</small></p>
+<small>note: privacy guards may interfere with the playground</small>
 </footer>
 
                     </main>

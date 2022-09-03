@@ -160,18 +160,18 @@ fun dur get_duration() {
 }
 
 
-get_ncycles() =&gt; const int ncycles;
-get_duration() =&gt; var dur duration;
+get_ncycles() :=&gt; const int ncycles;
+get_duration() :=&gt; var dur duration;
 
-1 =&gt; var int compensate;
+1 :=&gt; var int compensate;
 const SinOsc s ~&gt; dac;
 
 while(duration &gt;= samp) {
   repeat(ncycles * compensate) {
-    Math.rand2f(220, 880) =&gt; s.freq;
+    Math.rand2f(220, 880) :=&gt; s.freq;
     duration =&gt; now;
   }
-  duration/2. =&gt; duration;
+  duration/2. :=&gt; duration;
   2 *=&gt; compensate;
 }
 </code></pre>
@@ -192,7 +192,7 @@ then we get the <code>int</code> value out of it, with <code>Std.atoi</code>.</p
 <footer>
 built with <a href="https://github.com/fennecdjay/mdr">mdr</a> and <a href="https://github.com/rust-lang/mdBook/">mdBook</a></br>
 You'll find the source <a href="https://github.com/Gwion/Gwion">here</a>, Luke!
-<p><small>note: privacy guards may interfere with the playground</small></p>
+<small>note: privacy guards may interfere with the playground</small>
 </footer>
 
                     </main>

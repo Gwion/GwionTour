@@ -57,10 +57,10 @@ ace.define("ace/mode/gwion_highlight_rules", ["require", "exports", "module", "a
                 regex: "\\b[a-zA-Z_][\\w\\d]*::"
             }, {
                 token: "keyword.source.gwion",
-                regex: "\\b(?:abstract|defer|repeat|foreach|break|continue|const|var|late|do|else|enum|for|final|if|extends|match|case|private|protect|global|return|self|static|public|class|struct|fun|operator|funcdef|trait|union|where|when|while|new)\\b"
+                regex: "\\b(?:abstract|defer|repeat|foreach|break|continue|const|var|late|do|else|enum|for|final|if|extends|match|case|private|protect|global|return|self|static|public|class|extends|union|struct|fun|function|locale|operator|funptr|trait|union|where|when|while|spork|fork|new)\\b"
             }, {
                 token: "storage.type.source.gwion",
-                regex: "\\b(?:Self|int|float|string|Event|Object|bool|Option|Ref|Array)\\b"
+                regex: "\\b(?:Self|void|int|float|string|Event|Object|bool|Option|Ref|Array)\\b"
             }, {
                 token: "variable.language.source.gwion",
                 regex: "\\b(?:self|this|me|adc|dac)\\b"
@@ -93,7 +93,7 @@ ace.define("ace/mode/gwion_highlight_rules", ["require", "exports", "module", "a
                 regex: "\\b(?:pi|EXIT_FAILURE|EXIT_SUCCESS|RAND_MAX|EOF|SEEK_SET|SEEK_CUR|SEEK_END|_IOFBF|_IONBF|_IOLBF|BUFSIZ|FOPEN_MAX|FILENAME_MAX|L_tmpnam|TMP_MAX|O_RDONLY|O_WRONLY|O_RDWR|O_APPEND|O_CREAT|O_EXCL|O_TRUNC|S_IFIFO|S_IFCHR|S_IFBLK|S_IFDIR|S_IFREG|S_IFMT|S_IEXEC|S_IWRITE|S_IREAD|S_IRWXU|S_IXUSR|S_IWUSR|S_IRUSR|F_OK|R_OK|W_OK|X_OK|STDIN_FILENO|STDOUT_FILENO|STDERR_FILENO)\\b"
             }, {
                 token: "meta.preprocessor.source.gwion",
-                regex : "#\\s*(?:include|require|pragma|__line__|__file__|__func__|ifdef|undef|define|undef)\\b"
+                regex : "#\\s*(?:include|import|require|pragma|__line__|__file__|__func__|ifdef|undef|define|undef|locale)\\b"
             }, {
                 token: "constant.numeric.source.gwion",
                 regex: /\b(?:0x[a-fA-F0-9_]+|0o[0-7_]+|0b[01_]+|[0-9][0-9_]*(?!\.))(?:[iu](?:size|8|16|32|64|128))?\b/
