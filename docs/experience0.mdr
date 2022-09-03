@@ -12,8 +12,8 @@ Look at the snippet (and listen the result)
 
 #define NCYCLES 2
 
-1 => var int compensate;
-second => var dur d;
+1 :=> var int compensate;
+second :=> var dur d;
 const SinOsc s ~> dac;
 
 while(d >= samp) {
@@ -21,7 +21,7 @@ while(d >= samp) {
     Math.rand2f(220, 880) => s.freq;
     d => now;
   }
-  d / 2. => d;
+  d / 2. :=> d;
   2 *=> compensate;
 }
 ```

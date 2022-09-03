@@ -24,18 +24,18 @@ fun dur get_duration() {
 }
 
 
-get_ncycles() => const int ncycles;
-get_duration() => var dur duration;
+get_ncycles() :=> const int ncycles;
+get_duration() :=> var dur duration;
 
-1 => var int compensate;
+1 :=> var int compensate;
 const SinOsc s ~> dac;
 
 while(duration >= samp) {
   repeat(ncycles * compensate) {
-    Math.rand2f(220, 880) => s.freq;
+    Math.rand2f(220, 880) :=> s.freq;
     duration => now;
   }
-  duration/2. => duration;
+  duration/2. :=> duration;
   2 *=> compensate;
 }
 ```
